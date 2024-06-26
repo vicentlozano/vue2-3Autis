@@ -14,15 +14,14 @@
   </head>
   <body>
     <header>
-      <h1>Vue Course Goals</h1>
+      <h1>Vue Events</h1>
     </header>
-    <section id="user-goal">
-      <h2>My Course Goal</h2>
-      <p>{{chooseGoal()}}</p>
-      <p v-html="myh1goal" style="color: aliceblue"></p> <!--Si queremos poner texto html directamente utilizamos v-html-->
-      <!--Interpolar valores entre etiquetas {{}}-->
-      <p>Learn more <a v-bind:href="vueLink">about Vue</a></p>
-      <!--Interpolar valores a los atributos de las etiquetas (v-bind)-->
+    <section id="events">
+      <h2>Events in Action</h2>
+      <button @click="increment">Add</button>
+      <!--Como vemos podemos llamar al metodo de las dos formas increment / increment()-->
+      <button v-on:click="decrement()">Reduce</button>
+      <p>Result: {{ counter }}</p>
     </section>
   </body>
 </html>

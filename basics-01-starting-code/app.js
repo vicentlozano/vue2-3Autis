@@ -3,12 +3,13 @@ const app = Vue.createApp({
     return {
       courseGoal: ["Finish the cours and learn Vue!", "Learn a lot of Vue.js"],
       vueLink: "https://vuejs.org/",
+      myh1goal: "<h1>I will do amazing vue.js apps!</h1>",
     };
   },
   methods: {
     chooseGoal() {
       let number = Math.floor(Math.random() * 2);
-      return this.courseGoal[number];
+      return this.courseGoal[number]; // Para referirnos a las propiedades del objeto( corseGoal, vueLink etc), utilizamos this., como si una propiedad de una clase de java se tratara
     },
   },
 });

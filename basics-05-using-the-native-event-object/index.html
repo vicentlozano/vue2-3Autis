@@ -31,6 +31,12 @@
       <!-- <p>Your Name: {{ fullNamed() }}</p>  esxta no seria una buena tecnica, dado que el metodo se ejecutaria cada vez que cambia cualquier variable reactiva.-->
 
       <p>Your name: {{fullnameComputed}}</p>
+      <p>Your name: {{fullNamed()}}</p>
+
+      <p>{{returnTest}}</p>
+      <p>{{returnTest2()}}</p>
+      <button @click="aleatorio()">Aleatorio</button>
+
       <!-- fullname es una propiedad computada-->
     </section>
   </body>

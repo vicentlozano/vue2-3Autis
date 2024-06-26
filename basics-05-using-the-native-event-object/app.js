@@ -4,6 +4,11 @@ const app = Vue.createApp({
       counter: 0,
       name: "",
       lastName: "",
+      test: "test",
+      test2: "test2",
+      a: 10,
+      b: 20,
+      suma: undefined,
     };
   },
 
@@ -21,6 +26,10 @@ const app = Vue.createApp({
       }
       console.log("running again");
       return this.name + " " + this.lastName;
+    },
+    returnTest() {
+      console.log("funcionando");
+      return this.a + this.b;
     },
   },
   // Los watchers son utiles pero no en este contexto, ja que con las ppropiedades computadas hacemos lo mismo pero con mismo codigo.
@@ -42,6 +51,11 @@ const app = Vue.createApp({
     // },
   },
   methods: {
+    returnTest2() {
+      this.suma = this.a + this.b;
+      console.log("funcionandoMetodo");
+      return this.suma;
+    },
     setName(event, lastName) {
       this.name = event.target.value;
     },
@@ -64,6 +78,10 @@ const app = Vue.createApp({
       }
       console.log("running again");
       return this.name + " " + "Lozano";
+    },
+
+    aleatorio() {
+      this.a = 50;
     },
   },
 });

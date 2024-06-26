@@ -1,0 +1,7 @@
+METHODS: Usaremos los metodos para enlazar eventos o interpolar variables. No usar metodos si no queremos que cada vez que canvie una propiedad
+        se vuelvan a ejecutar, dado que perderiamos efectividad y rapidez. Es decir, usar normalmente solo para enlazar eventos.
+
+COMPUTEDS: Las usamos para el enlace de datos, no para lso eventos. Son muy buenas para reevaluar propiedades, ya que solo se volveran a evaluar si se canvian esas propiedades.
+            Usar para datos que dependan de otros datos.
+
+WATCHERS: Los observadores no se usan directamente en la plantilla.Normalmente los utilizaremos en peticiones https o en casos concretos para reaccionar con una logica a ellos.

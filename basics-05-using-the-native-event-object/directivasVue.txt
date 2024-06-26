@@ -1,0 +1,40 @@
+
+
+Las directivas en Vue.js son atributos especiales con el prefijo `v-` que indican al framework realizar alguna acción sobre el elemento del DOM. 
+Aquí están algunas de las directivas más importantes y comúnmente usadas en Vue.js:
+
+
+1. **`v-model`**:
+ Crea una vinculación bidireccional en elementos de formulario, como `<input>`, `<textarea>`, y `<select>`. Esencial para manejar entradas de usuario.
+
+2. **`v-bind`** o tambien `:` :
+ Enlaza atributos HTML a expresiones de Vue. Por ejemplo, puede enlazar el atributo `href` de un enlace a una variable en Vue. Se puede abreviar como `:`.
+
+3. **`v-on`**: 
+ Adjunta oyentes de eventos a elementos, permitiendo que Vue maneje eventos del DOM, como clics o entradas de teclado. Se puede abreviar como `@`.
+
+4. **`v-for`**: 
+ Renderiza una lista de elementos basada en un arreglo. Es útil para generar listas o tablas dinámicamente.
+
+5. **`v-if`, `v-else-if`, `v-else`**:
+ Controla la renderización condicional de elementos. `v-if` verifica si una expresión es verdadera para renderizar un elemento.
+
+6. **`v-show`**:
+ Similar a `v-if`, pero en lugar de eliminar el elemento del DOM, simplemente cambia su estilo CSS `display` para ocultarlo o mostrarlo. Es útil para casos donde se necesita alternar la visibilidad de un elemento frecuentemente.
+
+7. **`v-text`**:
+ Actualiza el `textContent` de un elemento con el resultado de una expresión de Vue. Es una alternativa a la interpolación de texto con `{{ }}`.
+
+8. **`v-html`**:
+ Establece el `innerHTML` de un elemento, permitiendo la inserción de HTML. Debe usarse con precaución debido a posibles vulnerabilidades de seguridad por inyección de HTML.
+
+9. **`v-pre`**:
+ Salta la compilación de Vue para este elemento y todos sus hijos. Útil para optimizar el rendimiento cuando se sabe que no hay directivas o interpolaciones.
+
+10. **`v-cloak`**:
+ Esta directiva se mantiene en el elemento hasta que la instancia de Vue asociada termina su compilación. Comúnmente usada para ocultar plantillas no compiladas con CSS hasta que Vue esté listo.
+
+11. **`v-once`**:
+ Renderiza el elemento y sus hijos una sola vez. La interpolación y las directivas no se vuelven a evaluar después de la primera renderización.
+
+ Estas directivas permiten una amplia gama de interacciones y comportamientos dinámicos en aplicaciones Vue.js, facilitando la manipulación del DOM y la reactividad de datos.

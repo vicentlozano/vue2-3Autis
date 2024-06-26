@@ -9,7 +9,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
-    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="https://unpkg.com/vue@3.4.9/dist/vue.global.js" defer></script>
     <script src="app.js" defer></script>
   </head>
   <body>
@@ -19,10 +19,19 @@
     <section id="events">
       <h2>Events in Action</h2>
       <button v-on:click="add(10)">Add 10</button>
-      <button v-on:click="reduce(5)">Subtract 5</button>
+      <button @click="reduce(5)">Subtract 5</button>
       <p>Result: {{ counter }}</p>
-      <input type="text" v-on:input="setName($event, 'Schwarzmüller')">
-      <p>Your Name: {{ name }}</p>
+      <input type="text" v-model="name" />
+      <input type="text" v-model="lastName" />
+
+      <!-- v-model equivale a todo esto:  
+      v-on:input="setName($event, 'Schwarzmüller')"
+      v-bind:value="name", es decir, es un v-bind y un v-on a la vez -->
+      <button v-on:click="resetInput">Reset Input</button>
+      <!-- <p>Your Name: {{ fullNamed() }}</p>  esxta no seria una buena tecnica, dado que el metodo se ejecutaria cada vez que cambia cualquier variable reactiva.-->
+
+      <p>Your name: {{fullnameComputed}}</p>
+      <!-- fullname es una propiedad computada-->
     </section>
   </body>
 </html>

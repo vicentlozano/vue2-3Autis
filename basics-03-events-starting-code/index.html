@@ -18,10 +18,26 @@
     </header>
     <section id="events">
       <h2>Events in Action</h2>
-      <button @click="increment">Add</button>
+      <button @click="increment(5)">Add</button>
       <!--Como vemos podemos llamar al metodo de las dos formas increment / increment()-->
-      <button v-on:click="decrement()">Reduce</button>
+      <button v-on:click.right.prevent="decrement(5)">Reduce</button>
+      <!-- Aqui podemos observar como ponemoos dos modificadores al evento, uno de prevenir el 
+      comportamiento por defecto y otro para que sea el boton derecho del raton el que active el evento-->
+      <p v-once>Starting Counter: {{counter}}</p> <!-- La directiva v-once nos permite conservar el estado inicial de una avriable reactiva-->
       <p>Result: {{ counter }}</p>
+      <input
+        type="text"
+        placeholder="Introduce your name"
+        v-on:input="setName($event,'Lozano')"
+        v-on:keyup.enter="confirmedAct"
+        v-model="formName"
+      />
+      <!--Escuchar un evento input-->
+      <p>Your Name: {{confirmedName}}</p>
+      <form v-on:submit.prevent="submitForm">
+        <input type="text" v-model="formData" />
+        <button>Sign Up</button>
+      </form>
     </section>
   </body>
 </html>

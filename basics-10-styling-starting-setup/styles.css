@@ -3,7 +3,7 @@
 }
 
 html {
-  font-family: 'Jost', sans-serif;
+  font-family: "Jost", sans-serif;
 }
 
 body {
@@ -35,7 +35,6 @@ header {
   border: 2px dashed #ccc;
 }
 .active {
-  border-color: red;
-  background-color: salmon;
-
+  border-color: blue;
+  background-color: orange;
 }

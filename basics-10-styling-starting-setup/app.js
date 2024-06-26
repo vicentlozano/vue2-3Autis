@@ -11,22 +11,16 @@ const app = Vue.createApp({
   methods: {
     changeSelected(a) {
       switch (a) {
-        case 'a': {
-          this.boxASelected === true
-            ? (this.boxASelected = false)
-            : (this.boxASelected = true);
+        case "a": {
+          this.boxASelected = !this.boxASelected;
           break;
         }
-        case 'b': {
-          this.boxBSelected === true
-            ? (this.boxBSelected = false)
-            : (this.boxBSelected = true);
+        case "b": {
+          this.boxBSelected = !this.boxBSelected;
           break;
         }
-        case 'c': {
-          this.boxCSelected === true
-            ? (this.boxCSelected = false)
-            : (this.boxCSelected = true);
+        case "c": {
+          this.boxCSelected = !this.boxCSelected;
           break;
         }
       }

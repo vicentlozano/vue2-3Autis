@@ -19,18 +19,18 @@
     <section id="styling">
       <div
         class="demo"
+        :class="{active:boxASelected}"
         @click="changeSelected('a')"
-        :style="{backgroundColor: boxASelected? 'red' : '#ccc'}"
       ></div>
       <div
         class="demo"
+        :class="{active:boxBSelected}"
         @click="changeSelected('b')"
-        :style="{backgroundColor: boxBSelected? 'red' : '#ccc'}"
       ></div>
       <div
         class="demo"
+        :class="{active:boxCSelected}"
         @click="changeSelected('c')"
-        :style="{backgroundColor: boxCSelected? 'red' : '#ccc'}"
       ></div>
     </section>
   </body>

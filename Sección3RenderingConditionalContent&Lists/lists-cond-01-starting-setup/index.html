@@ -39,7 +39,8 @@
           :key="element.id"
           @click="removeToList(element.id)"
         >
-          {{element.text + element.id}}
+          <p>{{element.text + element.id}}</p>
+          <input type="text" @click.stop   />
         </li>
       </ul>
       <!-- Ejemplo de array -->

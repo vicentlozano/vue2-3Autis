@@ -8,6 +8,7 @@ const app = Vue.createApp({
       trueOrFalse: false,
       count: 0,
       isUndefined: true,
+      listInput: "",
     };
   },
   methods: {

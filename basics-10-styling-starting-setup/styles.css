@@ -35,6 +35,8 @@ header {
   border: 2px dashed #ccc;
 }
 .active {
-  border-color: blue;
   background-color: orange;
+}
+.normally{
+  border-color: blue;
 }

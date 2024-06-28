@@ -33,7 +33,7 @@
           </div>
         </div>
       </section>
-      <section id="controls" v-if="!winnerPlayer && !winnerMonster">
+      <section id="controls" v-if="!winnerPlayer && !winnerMonster && !isDraw">
         <button @click="attackMonster">ATTACK</button>
         <button :disabled="isCountRounds" @click="specialAtackMonster">
           SPECIAL ATTACK
@@ -41,15 +41,30 @@
         <button @click="healPlayer">HEAL</button>
         <button @click="surrender">SURRENDER</button>
       </section>
-      <section id="winner" v-else>
+      <section id="whoWin" v-else>
         <div v-if="winnerPlayer">Player win!!!</div>
         <div v-if="winnerMonster">Oh no! Monster win!</div>
-        <div v-if="isDraw">INCREDIBLE, IS A DRAW !!!</div>
+        <div v-if="isDraw">INCREDIBLE, IT'S A DRAW !!!</div>
         <button @click="newPlay">Another play?</button>
       </section>
       <section id="log" class="container">
         <h2>Battle Log</h2>
-        <ul></ul>
+        <ul>
+          <li v-for="element in listAttacks">
+            <span
+              :class="{'log--player' : element.actionBy === 'Player', 'log--monster' : element.actionBy === 'Monster'}"
+              >{{element.actionBy === 'Player' ? 'Player' : 'Monster'}}</span
+            >
+            <span v-if="element.actionType === 'Heals'">
+              heals himself for
+              <span class="log--heal">{{element.actionValue}}</span></span
+            >
+            <span v-else>
+              attacks and deals
+              <span class="log--damage">{{element.actionValue}}</span>
+            </span>
+          </li>
+        </ul>
       </section>
     </div>
   </body>

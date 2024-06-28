@@ -51,7 +51,7 @@ section {
 #player h2 {
   margin: 0.25rem;
 }
-
+#whoWin,
 #controls {
   display: flex;
   flex-direction: row;

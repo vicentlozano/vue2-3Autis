@@ -75,15 +75,16 @@ const app = Vue.createApp({
         this.playerHealth = 0;
       }
     },
-  },
-  monsterHealth(value) {
-    if (value <= 0 && this.monsterHealth <= 0) {
-      //draw
-      this.isDraw = true;
-    } else if (value <= 0) {
-      this.winnerPlayer = true;
-      this.monsterHealth = 0;
-    }
+
+    monsterHealth(value) {
+      if (value <= 0 && this.playerHealth <= 0) {
+        //draw
+        this.isDraw = true;
+      } else if (value <= 0) {
+        this.winnerPlayer = true;
+        this.monsterHealth = 0;
+      }
+    },
   },
 });
 app.mount("#game");

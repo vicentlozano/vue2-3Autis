@@ -18,16 +18,8 @@
     </header>
     <section id="app">
       <ul>
-        <li v-for="(element,index) of friends">
-          <h2>{{element.name}}</h2>
-          <button @click="element.show = !element.show">
-            Show Details
-          </button>
-          <ul v-if="element.show">
-            <li><strong>Phone:</strong> {{element.phone}}</li>
-            <li><strong>Email:</strong> {{element.email}}</li>
-          </ul>
-        </li>
+        <friend-contact></friend-contact>
+        <friend-contact></friend-contact>
       </ul>
     </section>
   </body>

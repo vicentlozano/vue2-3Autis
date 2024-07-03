@@ -15,6 +15,8 @@ h1 {
     font-size:3rem;
     background-color: rgb(75, 136, 185);
     border-radius: 5px;
+    
+    
 }
 
 </style>

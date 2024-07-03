@@ -1,6 +1,6 @@
 <template>
     <li v-for="(goal,index) of goals" :key="index">
-<GoalCard :oneGoal="goal"></GoalCard>
+<GoalCard :oneGoal="goal"  @deleteThisGoal="deleteGoal"></GoalCard>
     </li>
 </template>
 <script>
@@ -14,6 +14,7 @@ export default {
             type: Array,
             required: true,
         }
+        
     },
 
     data() {
@@ -22,7 +23,9 @@ export default {
         }
     },
     methods: {
-
+deleteGoal(goal){
+    this.$emit('deleteGoalSelected',goal)
+}
     },
 }
 
@@ -30,5 +33,7 @@ export default {
 <style scoped>
 li {
   list-style-type: none;
+  padding-top: 20px;
+
 }
 </style>

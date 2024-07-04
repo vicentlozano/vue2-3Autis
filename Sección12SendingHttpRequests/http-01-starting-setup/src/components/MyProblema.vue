@@ -1,6 +1,8 @@
 <template>
   <button @click="idToNameOptimized(objectProvided)">Optimized</button>
   <button @click="idToName(objectProvided)">Not Optimized</button>
+  <p v-if="noOptimized">No optimized: {{idToName(objectProvided)}}</p>
+  <p v-if="optimized">Optimized: {{idToNameOptimized(objectProvided)}}</p>
 
 </template>
 <script>
@@ -34,7 +36,6 @@ export default {
       myFinalObject.grid = object.grid;
       myFinalObject.timePeriod = object.timePeriod;
 
-
       const shiftObject = this.myObject.shiftOptions.find(
         (element) => element.shiftId === object.shift
       );
@@ -62,42 +63,78 @@ export default {
         : object.defectStatus;
 
       console.log({ myFinalObject });
+      this.noOptimized = true;
       return myFinalObject;
     },
 
-    idToNameOptimized(object){
+    idToNameOptimized(object) {
       let myFinalObject = {};
-      
+
       const findAndAssign = (options, key, idKey, nameKey) => {
-            const foundObject = options.find(element => element[idKey] === object[key]);
-            myFinalObject[key] = foundObject ? foundObject[nameKey] : object[key];
-        };
+        const foundObject = options.find(
+          (element) => element[idKey] === object[key]
+        );
+        myFinalObject[key] = foundObject ? foundObject[nameKey] : object[key];
+      };
 
-        findAndAssign(this.myObject.modelOptions, 'model', 'modelId', 'modelName');
-        findAndAssign(this.myObject.bodyStyleOptions, 'bodyStyle', 'id', 'name');
-        findAndAssign(this.myObject.colorOptions, 'color', 'colorId', 'colorName');
-        findAndAssign(this.myObject.panelOptions, 'panel', 'panelId', 'panelName');
-        findAndAssign(this.myObject.shiftOptions, 'shift', 'shiftId', 'shiftName');
-        findAndAssign(this.myObject.defectSizeOptions, 'defectSize', 'id', 'name');
-        findAndAssign(this.myObject.defectTypeOptions, 'defectType', 'id', 'name');
-        findAndAssign(this.myObject.defectStatusOptions, 'defectStatus', 'id', 'name');
+      findAndAssign(
+        this.myObject.modelOptions,
+        'model',
+        'modelId',
+        'modelName'
+      );
+      findAndAssign(this.myObject.bodyStyleOptions, 'bodyStyle', 'id', 'name');
+      findAndAssign(
+        this.myObject.colorOptions,
+        'color',
+        'colorId',
+        'colorName'
+      );
+      findAndAssign(
+        this.myObject.panelOptions,
+        'panel',
+        'panelId',
+        'panelName'
+      );
+      findAndAssign(
+        this.myObject.shiftOptions,
+        'shift',
+        'shiftId',
+        'shiftName'
+      );
+      findAndAssign(
+        this.myObject.defectSizeOptions,
+        'defectSize',
+        'id',
+        'name'
+      );
+      findAndAssign(
+        this.myObject.defectTypeOptions,
+        'defectType',
+        'id',
+        'name'
+      );
+      findAndAssign(
+        this.myObject.defectStatusOptions,
+        'defectStatus',
+        'id',
+        'name'
+      );
 
-        myFinalObject.specificGrid = object.specificGrid;
-        myFinalObject.grid = object.grid;
-        myFinalObject.timePeriod = object.timePeriod;
+      myFinalObject.specificGrid = object.specificGrid;
+      myFinalObject.grid = object.grid;
+      myFinalObject.timePeriod = object.timePeriod;
 
-        console.log({ myFinalObject });
-        return myFinalObject;
-     
-
-
-
-
-
-  },},
+      console.log({ myFinalObject });
+      this.optimized = true;
+      return myFinalObject;
+    },
+  },
 
   data() {
     return {
+      noOptimized: false,
+      optimized: false,
       objectProvided: {
         model: 10,
 

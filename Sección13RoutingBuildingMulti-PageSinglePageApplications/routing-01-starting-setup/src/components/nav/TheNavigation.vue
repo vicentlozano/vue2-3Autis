@@ -19,7 +19,6 @@ export default {
 methods: {
   updateForm() {
     this.$router.push('/teams');
-    console.log
   }
 }
 };

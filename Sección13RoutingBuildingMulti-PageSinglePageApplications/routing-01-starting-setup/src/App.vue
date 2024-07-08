@@ -1,23 +1,22 @@
 <template>
-  <the-navigation ></the-navigation>
+  <the-navigation></the-navigation>
   <main>
-    <router-view>
-    </router-view>
+    <router-view> </router-view>
   </main>
+  <footer>
+    <router-view name="footer"></router-view>
+  </footer>
 </template>
 
 <script>
-
 import TheNavigation from './components/nav/TheNavigation.vue';
 
 export default {
   components: {
     TheNavigation,
-   
   },
   data() {
     return {
-      
       teams: [
         { id: 't1', name: 'Frontend Engineers', members: ['u1', 'u2'] },
         { id: 't2', name: 'Backend Engineers', members: ['u1', 'u2', 'u3'] },
@@ -38,7 +37,6 @@ export default {
       users: this.users,
     };
   },
-  
 };
 </script>
 

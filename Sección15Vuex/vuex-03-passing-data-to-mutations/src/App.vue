@@ -37,13 +37,13 @@ export default {
     addOne() {
       // this.$store.commit('increase', { value: 10 });
       this.$store.commit({
-        type: 'increase',
+        type: 'numbers/increase',
         value: 10,
       });
     },
     addTwenty() {
       this.$store.commit({
-        type: 'increase',
+        type: 'numbers/increase',
         value: 20,
       });
     },

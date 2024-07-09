@@ -1,4 +1,13 @@
 <template>
+  <nav>
+    <router-link to="/"><button>User List</button></router-link>
+    <router-link to="/prueba"><button>Prueba</button></router-link>
+  </nav>
+  <router-view v-slot="slotProps">
+    <transition name="fade-button" mode="out-in">
+      <component :is="slotProps.Component"></component>
+    </transition>
+  </router-view>
   <div class="container">
     <div class="block" :class="{ moveblock: moveClass }"></div>
     <button @click="animation">Animate</button>
@@ -19,7 +28,7 @@
     </transition>
 
     <transition
-      name="another"
+      :css="false"
       @before-enter="beforeEnter"
       @before-leave="beforeLeave"
       @enter="enter"
@@ -30,15 +39,6 @@
       <p v-if="paraVisible">This is only sometimes visible...</p>
     </transition>
   </div>
-  <div class="container">
-    <transition name="fade-button" mode="out-in">
-      <button v-if="!usersAreVisible" @click="showUsers">Show Users</button>
-      <button v-else @click="hideUsers">Hide Users</button>
-    </transition>
-    <p v-if="usersAreVisible">Pablo</p>
-    <p v-if="usersAreVisible">Pepe</p>
-    <p v-if="usersAreVisible">Julian</p>
-  </div>
   <base-modal @close="hideDialog" :open="dialogIsVisible">
     <button @click="hideDialog">Close it!</button>
     <p>This is a test dialog!</p>
@@ -47,10 +47,12 @@
   <div class="container">
     <button @click="showDialog">Show Dialog</button>
   </div>
+  
 </template>
 
 <script>
 export default {
+  components: {},
   data() {
     return {
       dialogIsVisible: false,
@@ -61,6 +63,12 @@ export default {
     };
   },
   methods: {
+    goPrueba() {
+      this.$router.push('/prueba');
+    },
+    goUserList() {
+      this.$router.push('/');
+    },
     showDialog() {
       this.dialogIsVisible = true;
     },
@@ -109,8 +117,8 @@ export default {
       let round = 1;
       let auxiliar = 1;
       const interval = setInterval(function () {
-        el.style.opacity = round - auxiliar * 0.09;
-        auxiliar++;
+        round = round - auxiliar * 0.01;
+        el.style.opacity = round;
         if (round <= 0) {
           clearInterval(interval);
           done();
@@ -133,9 +141,10 @@ export default {
 }
 html {
   font-family: sans-serif;
+  height: 100%;
 }
 body {
-  margin: 0;
+  overflow-x: hidden;
 }
 button {
   font: inherit;
@@ -191,7 +200,7 @@ button:active {
   transform: translateY(-30px);
 }
 .para-enter-active {
-  transition: all 0.5s ease-out;
+  transition: all 0.3s ease-out;
 }
 .para-enter-to {
   opacity: 1;
@@ -202,10 +211,10 @@ button:active {
   transform: translateY(0px);
 }
 .para-leave-active {
-  transition: all 0.5s ease-in;
+  transition: all 0.3s ease-in;
 }
 .para-leave-to {
-  opacity: 0.5;
+  opacity: 0;
   transform: translateY(-30px);
 }
 
@@ -222,5 +231,16 @@ button:active {
 .fade-button-enter-to,
 .fade-button-leave-from {
   opacity: 1;
+}
+nav {
+  max-width: 40rem;
+  margin: 2rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  padding: 2rem;
+  border: 2px solid #ccc;
+  border-radius: 12px;
 }
 </style>

@@ -1,37 +1,63 @@
 <template>
   <div>
+    <section>Filter</section>
     <section>
-      <h2>Filter</h2>
-    </section>
-    <section>
-      <div class="controls">
-        <button>Refresh</button>
-        <router-link to="/register">Register as Coach</router-link>
-      </div>
-      <ul>
-        <li v-for="coach of coachesList" :key="coach.id">
-          <div class="container">
-            <router-link to="/coaches/:id">{{ coach.firstName }}</router-link>
-          </div>
-        </li>
-      </ul>
+      <BaseCard
+        ><div class="controls">
+          <BaseButton mode="outline">Refresh</BaseButton>
+          <BaseButton link :to="'/register'">Register as Coach</BaseButton>
+        </div></BaseCard
+      >
+
+      <BaseCard
+        ><ul v-if="hasCoaches">
+          <CoachItem
+            v-for="coach in filteredCoches"
+            :key="coach.id"
+            :id="coach.id"
+            :first-name="coach.firstName"
+            :last-name="coach.lastName"
+            :areas="coach.areas"
+            :description="coach.description"
+            :hourly-rate="coach.hourlyRate"
+          >
+          </CoachItem>
+        </ul>
+        <h3 v-else>No coaches found</h3>
+        </BaseCard
+      >
     </section>
   </div>
 </template>
 
 <script>
+import CoachItem from '../../coaches/CoachItem.vue';
 export default {
+  components: { CoachItem },
+
   computed: {
+    filteredCoches() {
+      return this.$store.getters['myCoaches/coaches'];
+    },
     coachesList() {
       return this.$store.getters['myCoaches/coaches'];
+    },
+    hasCoaches() {
+      return this.$store.getters['myCoaches/hasCoaches'];
     },
   },
 };
 </script>
 
 <style scoped>
-.container {
-  width: 80vw;
-  padding: 1rem 2rem;
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
 }
 </style>

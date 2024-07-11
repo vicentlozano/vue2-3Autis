@@ -32,40 +32,6 @@ li {
   list-style-type: none;
 }
 
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.2rem;
-  margin: 10px;
-  border: 2px solid orange;
-  border-radius: 20px;
-  text-align: center;
-}
-
-.button {
-  display: inline-block;
-  border-radius: 20px;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
-  border: none;
-  padding: 10px 20px;
-  text-decoration: none;
-  color: inherit;
-  background-color: rgb(79, 187, 76);
-  cursor: pointer;
-  margin: 3px;
-  color: white;
-}
-button {
-  font: inherit;
-  padding: 0.5rem 2rem;
-  border: 1px solid #810032;
-  border-radius: 30px;
-  background-color: #810032;
-  color: white;
-  cursor: pointer;
-  margin: 5px;
-}
 button:hover,
 button:active {
   background-color: #a80b48;

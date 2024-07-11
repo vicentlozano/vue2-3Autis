@@ -24,11 +24,11 @@
       </div>
       <div>
         <input type="checkbox" id="backend" value="backend" v-model="areas" />
-        <label for="frontend">Backend Development</label>
+        <label for="backend">Backend Development</label>
       </div>
       <div>
         <input type="checkbox" id="career" value="career" v-model="areas" />
-        <label for="frontend">Career Development</label>
+        <label for="career">Career Development</label>
       </div>
     </div>
     <BaseButton>Register</BaseButton>
@@ -37,6 +37,7 @@
 
 <script>
 export default {
+  emits: ['save-data'],
   data() {
     return {
       firstName: '',
@@ -55,6 +56,7 @@ export default {
         rate: this.hourlyRate,
         areas: this.areas,
       };
+      this.$emit('save-data', formData);
       console.log(formData);
     },
   },
@@ -115,6 +117,5 @@ h3 {
 .invalid textarea {
   border: 1px solid red;
 }
-
-
-</style>]
+</style>
+]

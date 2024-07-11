@@ -1,4 +1,6 @@
 export default {
-    register() {},
+    register(context,payload) {
+      context.coaches.push(payload)
+    },
     setCoaches() {},
   }

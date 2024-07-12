@@ -12,6 +12,7 @@ import CoachForm from '../../coaches/CoachForm.vue';
 export default {
   components: { CoachForm },
   props: {},
+  
   methods: {
     saveData(data) {
       this.$store.dispatch('myCoaches/registerCoach', data);

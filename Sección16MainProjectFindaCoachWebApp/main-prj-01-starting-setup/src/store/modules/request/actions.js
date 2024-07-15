@@ -1,24 +1,25 @@
 export default {
-  async contactCoach(context, paylod) {
+  async contactCoach(context, payload) {
     const newRequest = {
-      userEmail: paylod.email,
-      message: paylod.message,
+      userEmail: payload.email,
+      message: payload.message,
     };
     const response = await fetch(
-      `https://coaches-cf9f9-default-rtdb.europe-west1.firebasedatabase.app/requests/${paylod.coachId}.json`,
+      `https://coaches-cf9f9-default-rtdb.europe-west1.firebasedatabase.app/requests/${payload.coachId}.json`,
       {
         method: 'POST',
         body: JSON.stringify(newRequest),
       }
     );
+    const responseData = await response.json();
+
     if (!response.ok) {
       //error...
       const error = new Error(responseData.message || 'Failed to send');
       throw error;
     }
-    const responseData = await response.json();
     newRequest.id = responseData.name;
-    newRequest.coachId = paylod.coachId;
+    newRequest.coachId = payload.coachId;
 
     context.commit('addRequest', newRequest);
   },
@@ -27,13 +28,14 @@ export default {
     const coachId = context.rootGetters.userId;
     const token = context.rootGetters.token;
 
-    const response = await fetch(
-      `https://coaches-cf9f9-default-rtdb.europe-west1.firebasedatabase.app/requests/${coachId}.json?auth=
-` + token
-    );
+    const url = `https://coaches-cf9f9-default-rtdb.europe-west1.firebasedatabase.app/requests/${coachId}.json`;
+
+    const queryParams = `?auth=${token}`;
+
+    const response = await fetch(url + queryParams);
     const responseData = await response.json();
+
     if (!response.ok) {
-      /// ...error
       const error = new Error(
         responseData.message || 'Failed to fetch request!'
       );

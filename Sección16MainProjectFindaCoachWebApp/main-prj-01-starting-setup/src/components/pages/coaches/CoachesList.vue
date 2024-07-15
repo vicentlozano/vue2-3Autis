@@ -10,8 +10,13 @@
           <BaseButton mode="outline" @click="loadCoaches(true)"
             >Refresh</BaseButton
           >
-          <BaseButton link to="/auth" v-if="!isLogegdIn">Login</BaseButton>
-          <BaseButton v-if="isLogegdIn && !isCoach && !isLoading" link :to="'/register'"
+          <BaseButton link to="/auth?redirect=register" v-if="!isLogegdIn"
+            >Login to Register as Coach</BaseButton
+          >
+          <BaseButton
+            v-if="isLogegdIn && !isCoach && !isLoading"
+            link
+            :to="'/register'"
             >Register as Coach</BaseButton
           >
         </div>

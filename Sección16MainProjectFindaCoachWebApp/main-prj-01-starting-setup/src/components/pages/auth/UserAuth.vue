@@ -76,16 +76,20 @@ export default {
       try {
         if (this.mode === 'login') {
           await this.$store.dispatch('login', actionPayload);
+          this.email = '';
+          this.password = '';
         } else {
           await this.$store.dispatch('signup', actionPayload);
+          this.email = '';
+          this.password = '';
         }
+        const reduirectUrl = '/' + (this.$route.query.redirect || 'coaches');
+        this.$router.replace(reduirectUrl);
       } catch (err) {
-        this.error = err.message || 'Failed to aithenticate, try later. ';
+        this.error = err.message || 'Failed to aithenticate, try later.';
+        this.password = '';
       }
-      this.$router.push('/request');
       this.isLoading = false;
-      this.email = '';
-      this.password = '';
     },
     swithAuthMode() {
       if (this.mode === 'login') {

@@ -1,22 +1,15 @@
 import { createStore } from 'vuex';
 import rootRequests from './modules/request/index';
 import rootCoaches from './modules/coaches/index';
+import rootAuth from './modules/auth/index';
 
 const store = createStore({
   modules: {
     myCoaches: rootCoaches,
     myRequests: rootRequests,
+    myAuth: rootAuth,
   },
-  state(){
-    return {
-      userId:'c3'
-    };
-  },
-  getters: {
-    userId(state) {
-      return state.userId;
-    }
-  }
+ 
 });
 
 export default store;

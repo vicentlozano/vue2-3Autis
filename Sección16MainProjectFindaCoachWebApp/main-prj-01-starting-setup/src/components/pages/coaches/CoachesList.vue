@@ -1,14 +1,17 @@
 <template>
   <div>
-    <BaseDialog :show="!!error" >
+    <BaseDialog :show="!!error" title="An error ocurred!" @close="handleError">
       <p>{{ error }}</p>
     </BaseDialog>
     <section><CoachFilter @change-filter="setFilters"></CoachFilter></section>
     <section>
       <BaseCard
         ><div class="controls">
-          <BaseButton mode="outline" @click="loadCoaches">Refresh</BaseButton>
-          <BaseButton v-if="!isCoach && !isLoading" link :to="'/register'"
+          <BaseButton mode="outline" @click="loadCoaches(true)"
+            >Refresh</BaseButton
+          >
+          <BaseButton link to="/auth" v-if="!isLogegdIn">Login</BaseButton>
+          <BaseButton v-if="isLogegdIn && !isCoach && !isLoading" link :to="'/register'"
             >Register as Coach</BaseButton
           >
         </div>
@@ -68,6 +71,9 @@ export default {
         return false;
       });
     },
+    isLogegdIn() {
+      return this.$store.getters.isAuthenticated;
+    },
     coachesList() {
       return this.$store.getters['myCoaches/coaches'];
     },
@@ -80,13 +86,18 @@ export default {
     },
   },
   methods: {
+    handleError() {
+      this.error = null;
+    },
     setFilters(updatedFilters) {
       this.activeFilters = updatedFilters;
     },
-    async loadCoaches() {
+    async loadCoaches(refresh = false) {
       this.isLoading = true;
       try {
-        await this.$store.dispatch('myCoaches/loadCoches');
+        await this.$store.dispatch('myCoaches/loadCoaches', {
+          forceRefresh: refresh,
+        });
       } catch (error) {
         this.error = error.message || 'Something went wrong!';
       }

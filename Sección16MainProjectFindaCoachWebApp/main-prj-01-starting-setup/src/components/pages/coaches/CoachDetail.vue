@@ -8,7 +8,9 @@
       <BaseCard>
         <header>
           <h2>Interested? Reach out now!</h2>
-          <BaseButton link :to="contactLink">Contact</BaseButton>
+          <BaseButton link :to="contactLink" v-if="!isContactPage"
+            >Contact</BaseButton
+          >
         </header>
         <router-view></router-view>
       </BaseCard>
@@ -41,13 +43,16 @@ export default {
       return this.selectedCoach.hourlyRate;
     },
     contactLink() {
-      return this.$route.path + '/' + this.id + '/contact';
+      return this.$route.path + '/contact';
     },
     areas() {
       return this.selectedCoach.areas;
     },
     description() {
       return this.selectedCoach.description;
+    },
+    isContactPage() {
+      return this.$route.path.endsWith('/contact');
     },
   },
   created() {

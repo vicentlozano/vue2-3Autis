@@ -1,28 +1,18 @@
 <template>
   <TheHeader> Our goals </TheHeader>
-  <TheNav @sectionRenderize="sectionToRender"></TheNav>
-  <KeepAlive>
-    <component
-      :is="activeSection"
-      :goals="goals"
-      @sendGoal="addNewGoal"
-      @deleteGoalSelected="deleteGoal"
-    >
-    </component>
-  </KeepAlive>
+  
+  <TheWeatherPage></TheWeatherPage>
 </template>
 
 <script>
-import AddGoals from './components/layout/AddGoals.vue';
-import MyGoals from './components/layout/MyGoals.vue';
+
 import TheHeader from './components/layout/TheHeader.vue';
-import TheNav from './components/layout/TheNav.vue';
+import TheWeatherPage from './pages/TheWeatherPage.vue';
 export default {
   components: {
     TheHeader,
-    TheNav,
-    MyGoals,
-    AddGoals,
+   
+    TheWeatherPage
   },
 
   data() {
